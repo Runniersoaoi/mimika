@@ -37,17 +37,17 @@ export const HeartsModal = () => {
         <DialogHeader>
           <div className="flex items-center w-full justify-center mb-5">
             <Image
-              src="/mascot_bad.svg"
+              src="/mascot_bad.png"
               alt="Mascot"
               height={80}
               width={80}
             />
           </div>
           <DialogTitle className="text-center font-bold text-2xl">
-            You ran out of hearts!
+            ¡Te quedaste sin corazones!
           </DialogTitle>
           <DialogDescription className="text-center text-base">
-            Get Pro for unlimited hearts, or purchase them in the store.
+            Obtén Pro para obtener corazones ilimitados o cómpralos en la tienda.
           </DialogDescription>
         </DialogHeader>
         <DialogFooter className="mb-4">
@@ -58,7 +58,7 @@ export const HeartsModal = () => {
               size="lg" 
               onClick={onClick}
             >
-              Get unlimited hearts
+              Consigue corazones ilimitados
             </Button>
             <Button
               variant="primaryOutline" 
@@ -66,7 +66,7 @@ export const HeartsModal = () => {
               size="lg" 
               onClick={close}
             >
-              No thanks
+              No, gracias
             </Button>
           </div>
         </DialogFooter>
