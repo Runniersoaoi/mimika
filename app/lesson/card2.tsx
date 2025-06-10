@@ -1,13 +1,13 @@
 "use client";
 
-import { useCallback } from 'react';
-import { useAudio, useKey } from 'react-use';
-import dynamic from 'next/dynamic';
+import { useCallback } from "react";
+import { useAudio, useKey } from "react-use";
+import dynamic from "next/dynamic";
 
-import { cn } from '@/lib/utils';
-import { challenges } from '@/db/schema';
+import { cn } from "@/lib/utils";
+import { challenges } from "@/db/schema";
 
-const CameraCapture = dynamic(() => import('./camera-capture'), {
+const CameraCapture = dynamic(() => import("./camera-capture"), {
   ssr: false,
 });
 
@@ -20,8 +20,8 @@ type Props = {
   selected?: boolean;
   onClick: () => void;
   disabled?: boolean;
-  status?: 'correct' | 'wrong' | 'none';
-  type: (typeof challenges.$inferSelect)['type'];
+  status?: "correct" | "wrong" | "none";
+  type: (typeof challenges.$inferSelect)["type"];
 };
 
 export const Card2 = ({
@@ -36,7 +36,7 @@ export const Card2 = ({
   status,
   type,
 }: Props) => {
-  const [audio, _, controls] = useAudio({ src: audioSrc || '' });
+  const [audio, _, controls] = useAudio({ src: audioSrc || "" });
 
   const handleClick = useCallback(() => {
     if (disabled) return;
@@ -49,16 +49,16 @@ export const Card2 = ({
   return (
     <div
       className={cn(
-        'h-6/12 border-2 rounded-xl border-b-4 hover:bg-black/5 p-4 lg:p-6 cursor-pointer active:border-b-2',
-        selected && 'border-sky-300 bg-sky-100 hover:bg-sky-100',
-        selected &&
-          status === 'correct' &&
-          'border-green-300 bg-green-100 hover:bg-green-100',
-        selected &&
-          status === 'wrong' &&
-          'border-rose-300 bg-rose-100 hover:bg-rose-100',
-        disabled && 'pointer-events-none hover:bg-white',
-        type === 'ASSIST' && 'lg:p-3 w-full'
+        "h-[200px] md:h-[300px] rounded-xl",
+        // selected && "border-sky-300 bg-sky-100 hover:bg-sky-100",
+        // selected &&
+        //   status === "correct" &&
+        //   "border-green-300 bg-green-100 hover:bg-green-100",
+        // selected &&
+        //   status === "wrong" &&
+        //   "border-rose-300 bg-rose-100 hover:bg-rose-100",
+        disabled && "pointer-events-none hover:bg-white",
+        type === "ASSIST" && "lg:p-3 w-full"
       )}
     >
       {audio}
@@ -69,11 +69,11 @@ export const Card2 = ({
 
       <div
         className={cn(
-          'flex items-center justify-between',
-          type === 'ASSIST' && 'flex-row-reverse'
+          "flex items-center justify-between",
+          type === "ASSIST" && "flex-row-reverse"
         )}
       >
-        {type === 'ASSIST' && <div />}
+        {type === "ASSIST" && <div />}
       </div>
     </div>
   );
