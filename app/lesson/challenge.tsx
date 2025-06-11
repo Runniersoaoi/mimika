@@ -31,7 +31,7 @@ export const Challenge = ({
           'grid-cols-2 lg:grid-cols-[repeat(auto-fit,minmax(0,1fr))]'
       )}
     >
-      {type === 'CAMERA'
+      {(type === 'CAMERA' || type ===  'TEXT')
         ? options.map((option, i) => (
             <Card2
               key={option.id}

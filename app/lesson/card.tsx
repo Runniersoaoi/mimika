@@ -76,7 +76,7 @@ export const Card = ({
           selected && status === "wrong" 
             && "text-rose-500",
         )}>
-          {text}
+          {text} 
         </p>
         <div className={cn(
           "lg:w-[30px] lg:h-[30px] w-[20px] h-[20px] border-2 flex items-center justify-center rounded-lg text-neutral-400 lg:text-[15px] text-xs font-semibold",

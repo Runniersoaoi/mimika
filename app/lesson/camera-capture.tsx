@@ -30,7 +30,7 @@ export default function CameraCapture({ expectedText, onCaptureDone }: Props) {
 
   const startTimerAndCapture = () => {
     setShowTimer(true);
-    setTimer(10);
+    setTimer(5);
 
     const countdown = setInterval(() => {
       setTimer((prev) => {
