@@ -48,7 +48,6 @@ export const Card2 = ({
 
   useEffect(() => {
     if (type === 'TEXT') {
-      
       const timer = setTimeout(() => {
         handleClick();
       }, 5000);

@@ -14,7 +14,7 @@ export default function CameraCapture({ expectedText, onCaptureDone }: Props) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const [prediction, setPrediction] = useState("");
   const [loading, setLoading] = useState(false);
-  const [timer, setTimer] = useState(10);
+  const [timer, setTimer] = useState(5);
   const [showTimer, setShowTimer] = useState(false);
 
   const startCamera = async () => {

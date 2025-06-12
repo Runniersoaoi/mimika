@@ -87,13 +87,13 @@ export const Quiz = ({
   };
 
   const onSelect = (id: number) => {
-    if (status !== 'none' || challenge.type === 'TEXT') return;
+    if (status !== 'none' && challenge.type !== 'TEXT') return;
 
     setSelectedOption(id);
   };
 
   const onContinue = () => {
-    if (!selectedOption || challenge.type != 'TEXT') return;
+    if (!selectedOption && challenge.type != 'TEXT') return;
 
     if (status === 'wrong') {
       setStatus('none');
@@ -114,7 +114,7 @@ export const Quiz = ({
       return;
     }
 
-    if (correctOption.id === selectedOption) {
+    if (correctOption.id === selectedOption || challenge.type === 'TEXT') {
       startTransition(() => {
         upsertChallengeProgress(challenge.id)
           .then(response => {
