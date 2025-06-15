@@ -1,13 +1,14 @@
-'use client';
+"use client";
 
-import { useCallback, useEffect } from 'react';
-import { useAudio, useKey } from 'react-use';
-import dynamic from 'next/dynamic';
+import { useCallback, useEffect } from "react";
+import { useAudio, useKey } from "react-use";
+import dynamic from "next/dynamic";
 
-import { cn } from '@/lib/utils';
-import { challenges } from '@/db/schema';
+import { cn } from "@/lib/utils";
+import { challenges } from "@/db/schema";
+import Image from "next/image";
 
-const CameraCapture = dynamic(() => import('./camera-capture'), {
+const CameraCapture = dynamic(() => import("./camera-capture"), {
   ssr: false,
 });
 
@@ -20,8 +21,8 @@ type Props = {
   selected?: boolean;
   onClick: () => void;
   disabled?: boolean;
-  status?: 'correct' | 'wrong' | 'none';
-  type: (typeof challenges.$inferSelect)['type'];
+  status?: "correct" | "wrong" | "none";
+  type: (typeof challenges.$inferSelect)["type"];
 };
 
 export const Card2 = ({
@@ -36,7 +37,7 @@ export const Card2 = ({
   status,
   type,
 }: Props) => {
-  const [audio, _, controls] = useAudio({ src: audioSrc || '' });
+  const [audio, _, controls] = useAudio({ src: audioSrc || "" });
 
   const handleClick = useCallback(() => {
     if (disabled) return;
@@ -47,7 +48,7 @@ export const Card2 = ({
   useKey(shortcut, handleClick, {}, [handleClick]);
 
   useEffect(() => {
-    if (type === 'TEXT') {
+    if (type === "TEXT") {
       const timer = setTimeout(() => {
         handleClick();
       }, 5000);
@@ -57,10 +58,17 @@ export const Card2 = ({
 
   return (
     <div>
-      {type === 'CAMERA' ? (
+      {type === "CAMERA" ? (
         <CameraCapture expectedText={text} onCaptureDone={handleClick} />
       ) : (
-        <div className="p-2">{text}</div>
+        <div className="flex justify-center gap-4 flex-col items-center">
+          <div className="p-2">{text}</div>
+          {imageSrc ? (
+            <img alt={text} src={imageSrc} className="h-40 w-40" />
+          ) : (
+            <p></p>
+          )}
+        </div>
       )}
     </div>
   );
